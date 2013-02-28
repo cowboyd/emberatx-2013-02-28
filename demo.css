@@ -1,8 +1,18 @@
+* {
+  -webkit-box-sizing: border-box;
+}
+body, html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
 .container {
   position: relative;
-  min-height: 600px;
-  margin-top: 60px;
+  height: 100%;
+  width: auto !important;
   border: 1px dotted gray;
+  cursor: default;
+  -webkit-user-select: none;
 }
 
 .block {
@@ -23,3 +33,4 @@
   width: 100%;
   z-index: 0;
 }
+

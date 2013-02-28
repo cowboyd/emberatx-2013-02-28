@@ -12,6 +12,8 @@ $('.block').each ->
   drag = window.drag = interaction.get 'drag'
   $('.start').bindTo drag, 'start', ->
     "(x:#{drag.get('start.x')}, y:#{drag.get('start.y')})"
+  $('.end').bindTo drag, 'end', ->
+    "(x:#{drag.get('end.x')}, y:#{drag.get('end.y')})"
   $('.delta').bindTo drag, 'delta', ->
     "(x:#{drag.get('delta.x')}, y:#{drag.get('delta.y')})"
   $('.offset').bindTo drag, 'offset', ->

@@ -4,7 +4,6 @@ Point = Ember.Object.extend
 
 Drag = Ember.Object.extend
   path: []
-  offset0: top: 0, left: 0
 
   start: (->
     @get('path.firstObject') || Point.create()
@@ -15,10 +14,6 @@ Drag = Ember.Object.extend
   delta: (->
     x: @get('end.x') - @get('start.x'), y: @get('end.y') - @get('start.y')
   ).property 'start', 'end'
-  offset: (->
-    left: @get('offset0.left') + @get('delta.x')
-    top: @get('offset0.top') + @get('delta.y')
-  ).property 'delta.x', 'delta.y', 'offset0.left', 'offset0.top'
 
 Drag.Interaction = Ember.Object.extend
   init: (attrs)->
