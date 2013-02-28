@@ -30,5 +30,18 @@ $('.block').each ->
         .attr('stroke', 'gray')
         .attr('stroke-width', 1)
         .attr('fill', 'none')
-      ).observes 'drag.offset'
+      line = viewport.selectAll('line.distance').data([
+        offset0: @get 'drag.offset0'
+        offset: @get 'drag.offset'
+      ])
+      line.enter().append('line')
+        .attr('class', 'distance')
+        .attr('stroke-width', 1)
+        .attr('stroke', 'gray')
+      line
+        .attr('x1', (d)-> d.offset0.left)
+        .attr('x2', (d)-> d.offset.left)
+        .attr('y1', (d)-> d.offset0.top)
+        .attr('y2', (d)-> d.offset.top)
+    ).observes 'drag.offset'      
   .create(drag: drag)
