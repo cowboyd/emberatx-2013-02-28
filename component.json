@@ -1,0 +1,11 @@
+{
+  "name": "computed-properties-demo",
+  "version": "0.0.1",
+  "main": ["computed-properties-demo.js"],
+  "dependencies": {
+    "ember": ">= 0",
+    "d3": ">= 0",
+    "jasmine-jquery": ">= 0",
+    "bootstrap.css": ">= 0"
+  }
+}
