@@ -7,13 +7,13 @@ Drag = Ember.Object.extend
   offset0: top: 0, left: 0
 
   start: (->
-    @get('path.firstObject') || Point.create 
+    @get('path.firstObject') || Point.create()
   ).property 'path.firstObject'
   end: (->
-    @get('path.lastObject') || Point.create
+    @get('path.lastObject') || Point.create()
   ).property 'path.lastObject'
   delta: (->
-    x: @get('end.x') - @get('start.y'), y: @get('end.y') - @get('start.y')
+    x: @get('end.x') - @get('start.x'), y: @get('end.y') - @get('start.y')
   ).property 'start', 'end'
   offset: (->
     left: @get('offset0.left') + @get('delta.x')

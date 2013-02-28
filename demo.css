@@ -1,9 +1,16 @@
 .container {
   position: relative;
+  min-height: 600px;
+  margin-top: 60px;
+  border: 1px dotted gray;
 }
+
 .block {
   position: absolute;
+  top: 50%;
+  left: 50%;
   height: 25px;
   width: 25px;
   border: 1px solid blue;
+  z-index: 10;
 }
