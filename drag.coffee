@@ -1,7 +1,6 @@
 Point = Ember.Object.extend
   x: 0, y:0
 
-
 Drag = Ember.Object.extend
   path: []
 

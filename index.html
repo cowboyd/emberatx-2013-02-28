@@ -138,13 +138,67 @@ c.set 'r', 2
                     <h3>Interaction: What a Drag!</h3>
                 </section>
                 <section>
+                    <h2>What is a drag?</h2>
+                    <img src="https://thefrontside.s3.amazonaws.com/presentations/computed-properties/drag-model.png"/>
+                </section>
+                <section>
+                    <h2>Code it!</h2>
+<pre><code>Drag = Ember.Object.extend
+  path: []
+  start: (->
+    @get('path.firstObject') || Point.create()
+  ).property 'path.firstObject'
+  end: (->
+    @get('path.lastObject') || Point.create()
+  ).property 'path.lastObject'
+  delta: (->
+    x: @get('end.x') - @get('start.x')
+    y: @get('end.y') - @get('start.y')
+  ).property 'start', 'end'
+Drag.Interaction = Ember.Object.extend
+  init: ->
+    #...
+    $(document.body).on 'mousemove', (e)=>
+      @get('drag.path').pushObject Point.create x: e.pageX, y: e.pageY</code></pre>
+                </section>
+                <section>
+                    <h2>Data Flow</h2>
+                    <img src="https://thefrontside.s3.amazonaws.com/presentations/computed-properties/drag-model-deps1.png"/>
+                </section>
+                <section>
                     <iframe id="demo2" src="./demo1.html" height="600" width="940" style="overflow-y: hidden;"></iframe>
                 </section>
+                <section>
+                    <h2>Applying a Drag to an element</h2>
+                    <img src="https://thefrontside.s3.amazonaws.com/presentations/computed-properties/drag-offset-model.png"/>
+                </section>
+                <section>
+                    <h2>Code it!</h2>
+<pre><code>Drag = Ember.Object.extend
+  #...
+  offset:
+    left: @get('offset0.left') + @get('delta.x')
+    top: @get('offset0.top') + @get('delta.y')
+  ).property 'delta.x', 'delta.y', 'offset0.left', 'offset0.top'
 
+Drag.Interaction = Ember.Object.extend
+  updateOffsets: (->
+    $(@get 'element').css
+      left: @get 'drag.offset.left'
+      top: @get 'drag.offset.top'
+  ).observes 'drag.offset.left', 'drag.offset.top'</code></pre>
+                </section>
+                <section>
+                    <h2>Data Flow</h2>
+                    <img src="https://thefrontside.s3.amazonaws.com/presentations/computed-properties/drag-model-deps2.png"/>
+                </section>
                 <section>
                     <iframe id="demo2" src="./demo2.html" height="600" width="940" style="overflow-y: hidden;"></iframe>
                 </section>
 
+                <section>
+                    <h2></h2>
+                </section>
                 <section id="transitions">
 					<h2>Transition Styles</h2>
 					<p>
