@@ -13,6 +13,11 @@ class Harness < Sinatra::Base
     CoffeeScript.compile File.read File.join self.class.root, 'drag.coffee'
   end
 
+  get '/drag2.js' do
+    content_type 'text/javascript'
+    CoffeeScript.compile File.read File.join self.class.root, 'drag2.coffee'
+  end
+
   get '/harness.js' do
     content_type 'text/javascript'
     CoffeeScript.compile File.read File.join self.class.root, 'harness.coffee'
